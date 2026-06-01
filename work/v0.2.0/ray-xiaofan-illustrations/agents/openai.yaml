@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ray 小反配图"
+  short_description: "为中文文章生成小反正文配图，并暂存待图床替换"
+  default_prompt: "Use $ray-xiaofan-illustrations to 为这篇中文文章设计并生成几张小反怪诞正文配图，先放到临时目录等待确认。"
+policy:
+  allow_implicit_invocation: true

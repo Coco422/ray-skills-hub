@@ -48,6 +48,10 @@ scripts/install-skill-from-github.py \
 - `path` 指向真实 skill 目录
 - `version` 标注当前 hub 收录版本
 
+## Drafts
+
+`work/v0.2.0/ray-xiaofan-illustrations/` 是 `ray-xiaofan-illustrations` 的 v0.2.0 资产开发副本，包含新版 v4 动作参考表、14 张新版 examples 和 `ASSET_MANIFEST.md`。它还没有合并进正式 `skills/team/` 目录。
+
 ## Third Party
 
 第三方 skill 先放入 `third_party/` 或独立实验目录，记录上游 URL、commit、license 和审阅人；确认可维护后再移入 `skills/team/`。
