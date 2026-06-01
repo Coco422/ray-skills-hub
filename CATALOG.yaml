@@ -1,0 +1,39 @@
+hub:
+  name: ray-skills-hub
+  version: v0.1.0
+  updated: "2026-06-02"
+
+skills:
+  - id: manage-skills-hub
+    path: skills/team/manage-skills-hub
+    source: team
+    owner: Ray
+    recommended: true
+    maturity: stable
+    version: v0.1.0
+    license: MIT
+    upstream: null
+    tags:
+      - skills-hub
+      - catalog
+      - maintenance
+      - installation
+    last_reviewed: "2026-06-02"
+
+  - id: ray-xiaofan-illustrations
+    path: skills/team/ray-xiaofan-illustrations
+    source: team
+    owner: Ray
+    recommended: true
+    maturity: beta
+    version: v0.1.0
+    license: MIT
+    upstream:
+      repo: https://github.com/helloianneo/ian-xiaohei-illustrations
+      ref: 793dddb94f0c7e212393d7362b27e49867b7a5bf
+    tags:
+      - illustration
+      - chinese-writing
+      - xiaofan
+      - image-generation
+    last_reviewed: "2026-06-02"

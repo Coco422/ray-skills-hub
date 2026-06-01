@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skills Hub 管理"
+  short_description: "管理、安装和维护 Ray Skills Hub 里的 Codex skills"
+  default_prompt: "Use $manage-skills-hub to 帮我查看、安装、添加或更新 Ray Skills Hub 里的 skill。"
