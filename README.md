@@ -18,7 +18,7 @@
 
 | Skill | Source | Version | Maturity | Recommended | Path |
 | --- | --- | --- | --- | --- | --- |
-| `khazix-writer` | personal | `v0.2.0` | stable | yes | `skills/personal/khazix-writer` |
+| `ray-writer` | personal | `v0.2.0` | stable | yes | `skills/personal/ray-writer` |
 
 ## Quick Start
 
@@ -27,7 +27,7 @@
 - 做项目级日报：用 `$project-daily-summary`。
 - 做会话收尾知识整理：用 `$neat-freak`。
 - 做横纵分析法深度研究：用 `$hv-analysis`。
-- 写 Ray / 卡兹克公众号长文：用 `$khazix-writer`。
+- 写 Ray 公众号长文：用 `$ray-writer`。
 
 ## Install
 
@@ -44,7 +44,7 @@ scripts/install-skill-from-github.py \
 
 scripts/install-skill-from-github.py \
   --repo <owner>/<repo> \
-  --path skills/personal/khazix-writer
+  --path skills/personal/ray-writer
 ```
 
 也可以固定到 release/tag：
@@ -57,7 +57,7 @@ scripts/install-skill-from-github.py \
   --url https://github.com/<owner>/<repo>/tree/main/skills/team/ray-xiaofan-illustrations
 
 scripts/install-skill-from-github.py \
-  --url https://github.com/<owner>/<repo>/tree/main/skills/personal/khazix-writer
+  --url https://github.com/<owner>/<repo>/tree/main/skills/personal/ray-writer
 ```
 
 安装后重启 Codex，让新 skill 被重新发现。

@@ -20,8 +20,8 @@ skills:
       - pdf-report
     last_reviewed: "2026-06-02"
 
-  - id: khazix-writer
-    path: skills/personal/khazix-writer
+  - id: ray-writer
+    path: skills/personal/ray-writer
     source: personal
     owner: Ray
     recommended: true
