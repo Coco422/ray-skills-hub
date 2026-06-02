@@ -4,15 +4,30 @@
 
 ## Skills
 
+### Team
+
 | Skill | Source | Version | Maturity | Recommended | Path |
 | --- | --- | --- | --- | --- | --- |
+| `hv-analysis` | team | `v0.2.0` | stable | yes | `skills/team/hv-analysis` |
 | `manage-skills-hub` | team | `v0.1.0` | stable | yes | `skills/team/manage-skills-hub` |
+| `neat-freak` | team | `v0.2.0` | stable | yes | `skills/team/neat-freak` |
+| `project-daily-summary` | team | `v0.2.0` | stable | yes | `skills/team/project-daily-summary` |
 | `ray-xiaofan-illustrations` | team | `v0.2.0` | beta | yes | `skills/team/ray-xiaofan-illustrations` |
+
+### Personal
+
+| Skill | Source | Version | Maturity | Recommended | Path |
+| --- | --- | --- | --- | --- | --- |
+| `khazix-writer` | personal | `v0.2.0` | stable | yes | `skills/personal/khazix-writer` |
 
 ## Quick Start
 
 - 管理这个 hub、查看可用 skills、添加/更新 skill、准备发版：用 `$manage-skills-hub`。
 - 生成 Ray / 小反风格中文正文配图：用 `$ray-xiaofan-illustrations`。
+- 做项目级日报：用 `$project-daily-summary`。
+- 做会话收尾知识整理：用 `$neat-freak`。
+- 做横纵分析法深度研究：用 `$hv-analysis`。
+- 写 Ray / 卡兹克公众号长文：用 `$khazix-writer`。
 
 ## Install
 
@@ -26,6 +41,10 @@ scripts/install-skill-from-github.py \
 scripts/install-skill-from-github.py \
   --repo <owner>/<repo> \
   --path skills/team/ray-xiaofan-illustrations
+
+scripts/install-skill-from-github.py \
+  --repo <owner>/<repo> \
+  --path skills/personal/khazix-writer
 ```
 
 也可以固定到 release/tag：
@@ -36,6 +55,9 @@ scripts/install-skill-from-github.py \
 
 scripts/install-skill-from-github.py \
   --url https://github.com/<owner>/<repo>/tree/main/skills/team/ray-xiaofan-illustrations
+
+scripts/install-skill-from-github.py \
+  --url https://github.com/<owner>/<repo>/tree/main/skills/personal/khazix-writer
 ```
 
 安装后重启 Codex，让新 skill 被重新发现。
@@ -54,7 +76,7 @@ scripts/install-skill-from-github.py \
 
 1. Fork `Coco422/ray-skills-hub` 到自己的 GitHub 账号。
 2. 从 fork 新建分支，例如 `feat/add-my-skill` 或 `fix/update-skill-name`。
-3. 把 skill 放到 `skills/team/<skill-name>/`，确保目录名等于 `SKILL.md` frontmatter 里的 `name`。
+3. 把团队 skill 放到 `skills/team/<skill-name>/`；Ray 个人 skill 放到 `skills/personal/<skill-name>/`。目录名必须等于 `SKILL.md` frontmatter 里的 `name`。
 4. 更新 `CATALOG.yaml` 和 README 的 Skills 表。
 5. 本地验证 YAML、路径、frontmatter name 一致。
 6. Push 到自己的 fork，并向 `Coco422/ray-skills-hub:main` 发 PR。

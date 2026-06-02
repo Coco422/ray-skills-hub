@@ -4,6 +4,38 @@ hub:
   updated: "2026-06-02"
 
 skills:
+  - id: hv-analysis
+    path: skills/team/hv-analysis
+    source: team
+    owner: Ray
+    recommended: true
+    maturity: stable
+    version: v0.2.0
+    license: unknown
+    upstream: null
+    tags:
+      - research
+      - analysis
+      - deep-research
+      - pdf-report
+    last_reviewed: "2026-06-02"
+
+  - id: khazix-writer
+    path: skills/personal/khazix-writer
+    source: personal
+    owner: Ray
+    recommended: true
+    maturity: stable
+    version: v0.2.0
+    license: private
+    upstream: null
+    tags:
+      - writing
+      - wechat
+      - longform
+      - ray
+    last_reviewed: "2026-06-02"
+
   - id: manage-skills-hub
     path: skills/team/manage-skills-hub
     source: team
@@ -36,4 +68,36 @@ skills:
       - chinese-writing
       - xiaofan
       - image-generation
+    last_reviewed: "2026-06-02"
+
+  - id: neat-freak
+    path: skills/team/neat-freak
+    source: team
+    owner: Ray
+    recommended: true
+    maturity: stable
+    version: v0.2.0
+    license: unknown
+    upstream: null
+    tags:
+      - docs
+      - memory
+      - cleanup
+      - handoff
+    last_reviewed: "2026-06-02"
+
+  - id: project-daily-summary
+    path: skills/team/project-daily-summary
+    source: team
+    owner: Ray
+    recommended: true
+    maturity: stable
+    version: v0.2.0
+    license: MIT
+    upstream: null
+    tags:
+      - daily-summary
+      - codex-sessions
+      - projects
+      - reporting
     last_reviewed: "2026-06-02"

@@ -22,6 +22,8 @@ skills/
     agents/openai.yaml
     references/
     assets/
+  personal/<skill-name>/
+    SKILL.md
 third_party/
 ```
 
@@ -47,7 +49,7 @@ After installation, tell the user to restart Codex.
 
 ### Add or Update a Team Skill
 
-1. Put the skill under `skills/team/<skill-name>/`.
+1. Put team skills under `skills/team/<skill-name>/`; put Ray personal skills under `skills/personal/<skill-name>/`.
 2. Ensure folder name equals `SKILL.md` frontmatter `name`.
 3. Keep `SKILL.md` concise; move long material to `references/`.
 4. Update `CATALOG.yaml` and the skills table in `README.md`.
@@ -59,7 +61,7 @@ For external collaborators, use this exact flow:
 
 1. Fork `Coco422/ray-skills-hub`.
 2. Create a branch in the fork, such as `feat/add-<skill-name>` or `fix/update-<skill-name>`.
-3. Add or update files only under the relevant skill directory plus `CATALOG.yaml` and `README.md`.
+3. Add or update files only under the relevant skill directory plus `CATALOG.yaml` and `README.md`. Team skills go under `skills/team/`; Ray personal skills go under `skills/personal/`.
 4. Keep historical versions in Git history; the repository tree should contain only the latest accepted version of each skill.
 5. Push the branch to the fork and open a PR against `Coco422/ray-skills-hub:main`.
 6. Ask the PR author to include purpose, trigger examples, source/license, assets included, and validation run.
