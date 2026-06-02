@@ -6,10 +6,13 @@
 Generate one standalone 16:9 horizontal Chinese article illustration.
 
 Visual DNA:
-Pure white background. Minimalist black hand-drawn line art. Slightly wobbly pen lines. Lots of empty white space. Sparse red/orange/blue handwritten Chinese annotations. Clean absurd product-sketch feeling. No gradients, no shadows, no paper texture, no complex background, no commercial vector style, no PPT infographic look, no cute mascot poster, no children's illustration, no realistic UI.
+Pure white background. Minimalist black hand-drawn line art. Slightly wobbly pen lines. Lots of empty white space. Sparse but readable red/orange/blue handwritten Chinese or English annotations. Clean absurd product-sketch feeling. No gradients, no shadows, no paper texture, no complex background, no commercial vector style, no PPT infographic look, no cute mascot poster, no children's illustration, no realistic UI.
+
+Reference discipline before generation:
+Visually inspect the provided 小反 v4 action reference sheet and 2-3 example illustrations before writing this prompt. Follow the visual identity from the references more strongly than any generic character interpretation.
 
 Recurring IP character required:
-小反, a small white rounded-body recurring worker character with a bold irregular black hand-drawn outline, two tiny black dot eyes, thin stick arms/legs, and a blank serious expression. The body contains exactly one short vivid red diagonal stroke; the red stroke is not an arrow. A small black curved arrow appears only on top of or near the head, integrated with the silhouette. Never place the arrow near the feet, lower body, ground, or tail position. 小反 must perform the core conceptual action, not decorate the scene. Hats, clothes, and tools may appear as temporary role props, but the white rounded body, internal red slash, and top/head arrow must remain recognizable. Make 小反 serious, deadpan, and slightly bizarre, not cute.
+小反, a small white hollow unclosed vertical oval/capsule recurring worker character with a bold irregular black hand-drawn outline, two tiny black dot eyes, thin stick arms/legs, and a blank serious expression. The body outline has one opening near the top or upper side; the open contour ends as a fixed black arrow tip. This arrow is part of the body contour, not a separate icon, not a floating mark, not headwear, not a prop. Never move the arrow to the feet, lower body, ground, tail, tools, labels, or background. The body contains exactly one short vivid red diagonal stroke; the red stroke is not an arrow. 小反 must perform the core conceptual action, not decorate the scene. Hats, clothes, and tools may appear as temporary role props, but the white unclosed hollow oval body, internal red slash, and contour-opening arrow must remain recognizable. Make 小反 serious, deadpan, and slightly bizarre, not cute.
 
 Theme:
 {正文配图主题}
@@ -26,14 +29,16 @@ Composition:
 Suggested elements:
 {元素1} / {元素2} / {元素3} / {元素4}
 
-Chinese handwritten labels:
+Short handwritten labels:
 {标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}
 
+Use short readable Chinese or English labels directly where useful. If drawing speech bubbles, captions, buttons, callout boxes, or label containers, put short text inside them. Do not leave empty speech bubbles, blank captions, blank buttons, or empty explanation boxes.
+
 Color use:
-Black for main line art, 小反 outline, eyes, limbs, and top/head arrow. Orange for main flow/path/arrows. Red for 小反's internal diagonal stroke and sparse key warnings/problems/results. Blue only for secondary notes or feedback/system state.
+Black for main line art, 小反 outline, eyes, limbs, and the fixed contour-opening arrow. Orange for main flow/path/arrows. Red for 小反's internal diagonal stroke and sparse key warnings/problems/results. Blue only for secondary notes or feedback/system state.
 
 Constraints:
-One image explains only one core structure. Keep the main subject around 40%-60% of the canvas. Preserve at least 35% blank white space. Use at most 5-8 short handwritten Chinese labels. Do not write a title in the top-left corner. Do not write the structure type on the image. Do not make it a formal diagram, course slide, or dense explainer. Do not copy prior examples or reuse known case compositions unless explicitly requested; invent a fresh visual metaphor for this specific article. It should be clear but not instructional, interesting but not childish, strange but clean.
+One image explains only one core structure. Keep the main subject around 40%-60% of the canvas. Preserve at least 35% blank white space. Use at most 5-8 short readable handwritten Chinese or English labels. Do not create blank text containers. Do not write a title in the top-left corner. Do not write the structure type on the image. Do not make it a formal diagram, course slide, or dense explainer. Do not copy prior examples or reuse known case compositions unless explicitly requested; invent a fresh visual metaphor for this specific article. It should be clear but not instructional, interesting but not childish, strange but clean.
 ```
 
 ## 图像编辑提示
@@ -47,5 +52,5 @@ Edit the provided image. Remove only the handwritten title "{要删除的文字}
 增强怪诞感：
 
 ```text
-Regenerate this illustration with the same core meaning and simple layout, but make 小反 more central to the conceptual action. 小反 should be doing the strange work that explains the idea, not standing beside the diagram. Keep 小反 as a white rounded-body character with one internal red diagonal stroke and one black curved arrow only on top of or near the head. Keep it clean, sparse, hand-drawn, and not cute.
+Regenerate this illustration with the same core meaning and simple layout, but make 小反 more central to the conceptual action. 小反 should be doing the strange work that explains the idea, not standing beside the diagram. Preserve 小反 as a white hollow unclosed vertical oval/capsule character with one body-contour opening that ends as a fixed black arrow tip, plus one internal red diagonal stroke. The black arrow must remain part of the contour opening; do not draw it as a separate icon or move it to the feet, lower body, ground, tools, labels, or background. Keep it clean, sparse, hand-drawn, and not cute. Use short readable Chinese or English labels where useful; do not create empty speech bubbles, blank captions, or blank explanation boxes.
 ```
