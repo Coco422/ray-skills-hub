@@ -68,6 +68,15 @@ For external collaborators, use this exact flow:
 
 When Ray asks an agent to process a PR, review the diff, verify the catalog and skill frontmatter, check assets/provenance, then either request changes or merge.
 
+### Branch Rules
+
+The remote repository should protect `main` with a GitHub ruleset:
+
+- Require pull requests before merging.
+- Require the `validate-catalog` status check.
+- Block direct pushes for collaborators.
+- Allow Ray/repo admins to bypass only for bootstrap or emergency maintenance.
+
 ### Third-Party or Upstream Skills
 
 Do not trust a moving upstream branch as production input. Record upstream repo, commit/ref, license, importer, and review status. Keep third-party material isolated until reviewed.
@@ -81,7 +90,7 @@ For a release, update hub `version`, skill entry versions, and README install ex
 Run targeted checks:
 
 ```bash
-ruby -ryaml -e 'cat=YAML.load_file("CATALOG.yaml"); cat["skills"].each { |s| abort("missing #{s["path"]}") unless File.directory?(s["path"]) }'
+python3 scripts/validate_catalog.py
 ```
 
 If PyYAML is available, also run:

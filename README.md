@@ -84,6 +84,10 @@ scripts/install-skill-from-github.py \
 
 Ray 会让 agent 处理 PR review、校验、整理和合并。
 
+### Branch Rules
+
+`main` 会配置 GitHub ruleset：协作者不能直接 push，必须开 PR，并且 `validate-catalog` 检查通过后才能合并。Ray / repo admin 仍可在 bootstrap 或紧急维护时绕过规则；正常维护也优先走 PR。
+
 ## Third Party
 
 第三方 skill 先放入 `third_party/` 或独立实验目录，记录上游 URL、commit、license 和审阅人；确认可维护后再移入 `skills/team/`。
