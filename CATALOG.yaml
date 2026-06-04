@@ -1,7 +1,7 @@
 hub:
   name: ray-skills-hub
   version: v0.4.0
-  updated: "2026-06-03"
+  updated: "2026-06-04"
 
 skills:
   - id: hv-analysis
@@ -68,7 +68,7 @@ skills:
       - chinese-writing
       - xiaofan
       - image-generation
-    last_reviewed: "2026-06-03"
+    last_reviewed: "2026-06-04"
 
   - id: neat-freak
     path: skills/team/neat-freak

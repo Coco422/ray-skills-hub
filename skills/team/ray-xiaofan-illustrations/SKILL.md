@@ -29,6 +29,29 @@ description: 生成 Ray / 小反风格的中文正文配图。用于用户要求
 
 v0.4.0 起，生成小反之前必须先视觉检查 `assets/xiaofan/xiaofan-white-redline-head-arrow-sheet-v4.png` 和至少 2-3 张 `assets/examples/*.png`。不要只靠文本描述指挥角色形象；先把小反的未闭合空心椭圆、开口箭头、红斜线和动作比例看准，再写 prompt。
 
+## 多张连续生成的角色锁定
+
+连续生成多张时，最容易发生角色漂移：第一张还是小反，后面逐渐变成普通白色小人、闭合胶囊、独立箭头头饰、红色箭头或可爱吉祥物。批量生成必须使用角色锁定流程。
+
+### 批量生成规则
+
+1. 把每张图当作独立单张生成，不要让模型“延续上一张图的风格”。
+2. 每张图生成前都重新查看 `assets/xiaofan/xiaofan-white-redline-head-arrow-sheet-v4.png`，并把它当作唯一角色身份基准。
+3. 如果当前工具支持参考图或 image-to-image，每一张都必须附上 `assets/xiaofan/xiaofan-white-redline-head-arrow-sheet-v4.png` 作为角色参考；不要用上一张生成图当角色参考。
+4. 如果当前工具只支持纯文本 prompt，每一张 prompt 都必须完整重复“角色锁定短块”，不要用“同上 / 保持一致 / 继续小反风格”等省略写法。
+5. 场景、道具、动作可以变化；小反本体不能变化。衣服、帽子和遮挡物要少用，且不能遮住开口箭头、红斜线和空心身体。
+6. 一张图里如果出现多个小反，先保证主小反标准；副小反尽量减少，避免模型把角色群像平均成别的形象。
+7. 任何一张开始漂移，后续不要沿用它。回到 v4 参考表重新生成这一张。
+
+### 角色锁定短块
+
+连续生成时，每张 prompt 都必须逐字或近似包含：
+
+```text
+Character identity lock:
+Use the same recurring character identity as the 小反 v4 reference sheet. 小反 is a white hollow unclosed vertical oval/capsule body with a black hand-drawn outline. The outline has exactly one opening near the top or upper side, and the open contour itself ends as a fixed black arrow tip. The arrow is part of the body outline, not a separate icon, not a floating mark, not headwear, not a prop. Keep exactly two tiny black dot eyes, thin black stick arms/legs, blank serious deadpan expression, and exactly one short vivid red diagonal slash inside the body. Do not close the oval. Do not add a separate arrow. Do not move the arrow to the feet, lower body, ground, tail, tools, labels, or background. Do not turn the red slash into an arrow. Do not make the character cute, mascot-like, black-filled, or a generic white blob.
+```
+
 ## 工作流
 
 ### 1. 消化正文

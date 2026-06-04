@@ -11,6 +11,12 @@ Pure white background. Minimalist black hand-drawn line art. Slightly wobbly pen
 Reference discipline before generation:
 Visually inspect the provided 小反 v4 action reference sheet and 2-3 example illustrations before writing this prompt. Follow the visual identity from the references more strongly than any generic character interpretation.
 
+Batch consistency rule:
+If generating multiple images, treat this image as a fresh standalone generation. Do not continue from the previous generated image. Re-anchor to the 小反 v4 reference sheet for every image. If image references are supported, use the 小反 v4 reference sheet for every generation and never use a previous generated image as the identity reference.
+
+Character identity lock:
+Use the same recurring character identity as the 小反 v4 reference sheet. 小反 is a white hollow unclosed vertical oval/capsule body with a black hand-drawn outline. The outline has exactly one opening near the top or upper side, and the open contour itself ends as a fixed black arrow tip. The arrow is part of the body outline, not a separate icon, not a floating mark, not headwear, not a prop. Keep exactly two tiny black dot eyes, thin black stick arms/legs, blank serious deadpan expression, and exactly one short vivid red diagonal slash inside the body. Do not close the oval. Do not add a separate arrow. Do not move the arrow to the feet, lower body, ground, tail, tools, labels, or background. Do not turn the red slash into an arrow. Do not make the character cute, mascot-like, black-filled, or a generic white blob.
+
 Recurring IP character required:
 小反, a small white hollow unclosed vertical oval/capsule recurring worker character with a bold irregular black hand-drawn outline, two tiny black dot eyes, thin stick arms/legs, and a blank serious expression. The body outline has one opening near the top or upper side; the open contour ends as a fixed black arrow tip. This arrow is part of the body contour, not a separate icon, not a floating mark, not headwear, not a prop. Never move the arrow to the feet, lower body, ground, tail, tools, labels, or background. The body contains exactly one short vivid red diagonal stroke; the red stroke is not an arrow. 小反 must perform the core conceptual action, not decorate the scene. Hats, clothes, and tools may appear as temporary role props, but the white unclosed hollow oval body, internal red slash, and contour-opening arrow must remain recognizable. Make 小反 serious, deadpan, and slightly bizarre, not cute.
 
@@ -40,6 +46,12 @@ Black for main line art, 小反 outline, eyes, limbs, and the fixed contour-open
 Constraints:
 One image explains only one core structure. Keep the main subject around 40%-60% of the canvas. Preserve at least 35% blank white space. Use at most 5-8 short readable handwritten Chinese or English labels. Do not create blank text containers. Do not write a title in the top-left corner. Do not write the structure type on the image. Do not make it a formal diagram, course slide, or dense explainer. Do not copy prior examples or reuse known case compositions unless explicitly requested; invent a fresh visual metaphor for this specific article. It should be clear but not instructional, interesting but not childish, strange but clean.
 ```
+
+## 连续多张生成提示
+
+连续生成时，不要在第 2 张以后写“保持上一张的小反形象”或“same character as before”。这会让模型继承上一张里的错误和漂移。每张都要重新粘贴 `Character identity lock`，并重新绑定小反 v4 参考表。
+
+如果某一张的小反已经漂移，不要用那张图继续编辑下一张；回到 v4 参考表和本模板重新生成。
 
 ## 图像编辑提示
 
