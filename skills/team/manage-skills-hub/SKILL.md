@@ -3,7 +3,7 @@ name: manage-skills-hub
 description: Manage and use Ray Skills Hub, a GitHub-based skills catalog (compatible with Claude Code and Codex). Use when the user asks to browse available team skills, install a skill from this hub, add or update a skill, prepare a release, maintain CATALOG.yaml/README.md, migrate a local skill into the hub, or record third-party/upstream provenance.
 ---
 
-# Manage Skills Hub v0.3.0
+# Manage Skills Hub v0.4.1
 
 ## Overview
 
@@ -60,7 +60,27 @@ After installation, restart the Claude Code session (or `/skills` to reload).
 
 #### Codex
 
-Copy the skill folder to `~/.codex/skills/<skill-name>/` and restart Codex.
+Prefer `$skill-installer` for first-time installs:
+
+```bash
+scripts/install-skill-from-github.py \
+  --repo Coco422/ray-skills-hub \
+  --path skills/team/<skill-name>
+```
+
+For updating an already-installed skill, compare against a fresh clone of `Coco422/ray-skills-hub`, back up the installed directory, replace it with the matching skill folder, then restart Codex.
+
+### Audit Local Skills
+
+When the user asks to clean, dedupe, or align local skills:
+
+1. Inventory relevant roots: `~/.codex/skills`, `~/.cc-switch/skills`, and `~/.claude/skills` when present.
+2. Compare folder names, `SKILL.md` frontmatter names, file hashes, and hub catalog entries.
+3. Treat identical copies across roots as intentional unless the user confirms removal; different tools may load different roots.
+4. Treat drifted hub skills as update candidates. Back up before replacing any installed directory.
+5. Treat `.system` skills and plugin cache skills as managed by Codex/plugins; do not edit them from this hub workflow.
+6. Do not delete or archive a local skill directory unless the user confirms the exact candidate list.
+7. Validate changed skills with `quick_validate.py` and re-run hub catalog validation when the hub repo changes.
 
 ### Add or Update a Team Skill
 
