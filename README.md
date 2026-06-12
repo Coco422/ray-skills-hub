@@ -19,8 +19,8 @@
 | Skill | Source | Version | Maturity | Recommended | Path |
 | --- | --- | --- | --- | --- | --- |
 | `ray-writer` | personal | `v0.2.0` | stable | yes | `skills/personal/ray-writer` |
-| `capture` | personal | `v0.1.0` | beta | yes | `skills/personal/capture` |
-| `codex-mac-patch` | personal | `v0.1.0` | beta | yes | `skills/personal/codex-mac-patch` |
+| `capture` | personal | `v0.1.1` | beta | yes | `skills/personal/capture` |
+| `codex-mac-patch` | personal | `v0.1.1` | beta | yes | `skills/personal/codex-mac-patch` |
 
 ## Quick Start
 

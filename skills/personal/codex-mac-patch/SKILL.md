@@ -23,7 +23,7 @@ Patches `/Applications/Codex.app` (Electron) to unlock features gated behind `au
 
 ```
 CODEX_HOME    = ~/.codex
-SKILL_DIR     = ~/.claude/skills/codex-mac-patch
+SKILL_DIR     = ${CODEX_HOME:-$HOME/.codex}/skills/codex-mac-patch, fallback to ~/.claude/skills/codex-mac-patch
 SCRIPTS       = SKILL_DIR/scripts
 WORK_DIR      = CODEX_HOME/desktop-patch-backup
 APP_BUNDLE    = /Applications/Codex.app
@@ -71,7 +71,11 @@ codesign -dv /Applications/Codex.app > ~/.codex/desktop-patch-backup/codesign.or
 Run the discovery script to locate gate files by content pattern (hash suffixes change per version):
 
 ```bash
-node ~/.claude/skills/codex-mac-patch/scripts/discover.mjs \
+CODEX_PATCH_SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills/codex-mac-patch"
+if [ ! -d "$CODEX_PATCH_SKILL_DIR" ]; then
+  CODEX_PATCH_SKILL_DIR="$HOME/.claude/skills/codex-mac-patch"
+fi
+node "$CODEX_PATCH_SKILL_DIR/scripts/discover.mjs" \
   ~/.codex/desktop-patch-backup/app.asar.orig \
   ~/.codex/desktop-patch-backup
 ```

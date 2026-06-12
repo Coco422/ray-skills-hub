@@ -2,7 +2,7 @@
 name: capture
 description: |
   一键采集网页或 PDF，自动完成 AI 处理和人工审核流程。
-  当用户提供 URL 或 PDF 路径时触发："/capture <url>" 或 "/capture <pdf路径>"
+  当用户提供 URL 或 PDF 路径时触发，例如 /capture URL 或 /capture PDF路径。
   适用于："帮我保存这篇文章"、"采集这个链接"、"收藏这个"、粘贴 URL。
   执行后自动进入 review 模式，等待用户确认分类和补充想法。
 ---
@@ -23,7 +23,11 @@ description: |
 使用 Playwright 脚本，支持微信公众号等 JS 渲染页面，自动下载文章图片：
 
 ```bash
-uv run python .claude/skills/capture/scripts/fetch_url.py "<url>" --wait 3 --images --output "00Inbox/urls/YYYY-MM-DD-简短描述.md"
+CAPTURE_SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills/capture"
+if [ ! -d "$CAPTURE_SKILL_DIR" ]; then
+  CAPTURE_SKILL_DIR="$HOME/.claude/skills/capture"
+fi
+uv run python "$CAPTURE_SKILL_DIR/scripts/fetch_url.py" "https://example.com/article" --wait 3 --images --output "00Inbox/urls/YYYY-MM-DD-简短描述.md"
 ```
 
 - `--wait 3` — 等待 3 秒确保页面加载完成
