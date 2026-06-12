@@ -9,7 +9,7 @@
 | Skill | Source | Version | Maturity | Recommended | Path |
 | --- | --- | --- | --- | --- | --- |
 | `hv-analysis` | team | `v0.2.0` | stable | yes | `skills/team/hv-analysis` |
-| `manage-skills-hub` | team | `v0.4.0` | stable | yes | `skills/team/manage-skills-hub` |
+| `manage-skills-hub` | team | `v0.4.1` | stable | yes | `skills/team/manage-skills-hub` |
 | `neat-freak` | team | `v0.2.0` | stable | yes | `skills/team/neat-freak` |
 | `project-daily-summary` | team | `v0.2.0` | stable | yes | `skills/team/project-daily-summary` |
 | `ray-xiaofan-illustrations` | team | `v0.4.0` | beta | yes | `skills/team/ray-xiaofan-illustrations` |
@@ -58,23 +58,23 @@ cp -r /tmp/ray-skills-hub/skills/personal/capture <your-project>/.claude/skills/
 
 ```bash
 scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
+  --repo Coco422/ray-skills-hub \
   --path skills/team/manage-skills-hub
 
 scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
+  --repo Coco422/ray-skills-hub \
   --path skills/team/ray-xiaofan-illustrations
 
 scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
+  --repo Coco422/ray-skills-hub \
   --path skills/personal/ray-writer
 
 scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
+  --repo Coco422/ray-skills-hub \
   --path skills/personal/capture
 
 scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
+  --repo Coco422/ray-skills-hub \
   --path skills/personal/codex-mac-patch
 ```
 
@@ -82,7 +82,7 @@ scripts/install-skill-from-github.py \
 
 ```bash
 scripts/install-skill-from-github.py \
-  --url https://github.com/<owner>/<repo>/tree/v0.4.0/skills/team/manage-skills-hub
+  --url https://github.com/Coco422/ray-skills-hub/tree/<tag>/skills/team/manage-skills-hub
 ```
 
 安装后重启 Codex，让新 skill 被重新发现。
