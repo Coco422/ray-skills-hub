@@ -1,0 +1,81 @@
+---
+import { marked } from "marked";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSkills } from "../../lib/skills";
+
+export function getStaticPaths() {
+  return getSkills().map((skill) => ({
+    params: { id: skill.id },
+    props: { skill },
+  }));
+}
+
+const { skill } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const renderedBody = marked.parse(skill.body, {
+  async: false,
+  gfm: true,
+});
+---
+
+<BaseLayout title={`${skill.id} - Ray Skills Hub`} description={skill.description}>
+  <main class="shell detail-shell">
+    <nav class="detail-nav" aria-label="Breadcrumb">
+      <a href={base}>← Back to hub</a>
+      <a href={skill.githubUrl}>Open folder on GitHub</a>
+    </nav>
+
+    <header class="detail-header">
+      <div>
+        <p class="eyebrow">{skill.source}</p>
+        <h1>{skill.id}</h1>
+        <p>{skill.description}</p>
+      </div>
+      <div class="detail-meta">
+        <span>{skill.version ?? "unversioned"}</span>
+        <span>{skill.maturity ?? "unknown maturity"}</span>
+        <span>{skill.owner ?? "unknown owner"}</span>
+        <span>{skill.license ?? "unknown license"}</span>
+      </div>
+    </header>
+
+    <section class="install-panel" aria-label="Install links">
+      <div>
+        <h2>Install source</h2>
+        <p>复制 raw SKILL.md 链接，或者复制 repo/path 安装命令。</p>
+      </div>
+      <div class="install-actions">
+        <button type="button" class="copy-btn" data-copy={skill.rawMdUrl}>Copy MD URL</button>
+        <button type="button" class="copy-btn secondary" data-copy={skill.installCommand}>
+          Copy install cmd
+        </button>
+        <a class="icon-link" href={skill.githubMdUrl}>View SKILL.md</a>
+      </div>
+      <pre><code>{skill.rawMdUrl}</code></pre>
+    </section>
+
+    <article class="markdown-body" set:html={renderedBody} />
+  </main>
+
+  <script>
+    document.addEventListener("click", async (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLButtonElement) || !target.dataset.copy) return;
+
+      const original = target.textContent;
+      try {
+        await navigator.clipboard.writeText(target.dataset.copy);
+        target.textContent = "Copied";
+        target.classList.add("copied");
+      } catch {
+        target.textContent = "Copy failed";
+      } finally {
+        window.setTimeout(() => {
+          target.textContent = original;
+          target.classList.remove("copied");
+        }, 1400);
+      }
+    });
+  </script>
+</BaseLayout>

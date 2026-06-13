@@ -33,6 +33,43 @@
 - 一键采集网页或 PDF：用 `$capture`。
 - Codex Desktop macOS 解限补丁：用 `$codex-mac-patch`。
 
+## Website
+
+这个仓库内置一个 Astro 静态站，用 `CATALOG.yaml` 和各个 `SKILL.md` 生成可视化 skills hub：
+
+- 首页展示 skill 卡片、搜索、source/tag 筛选
+- 每个 skill 详情页展示完整 `SKILL.md`
+- 卡片和详情页都支持一键复制 raw `SKILL.md` 链接与安装命令
+
+本地开发：
+
+```bash
+npm install
+npm run dev
+```
+
+构建与校验：
+
+```bash
+npm run validate
+npm run build
+npm audit --omit=dev
+```
+
+GitHub Pages 部署由 `.github/workflows/pages.yml` 完成。默认自定义域名是：
+
+```text
+https://skills.521980.xyz/
+```
+
+如果改接其他自定义域名，把 GitHub Pages 的 custom domain 配好后，在 Pages workflow 里设置：
+
+```yaml
+env:
+  SITE_URL: https://你的域名
+  SITE_BASE: /
+```
+
 ## Install
 
 ### Claude Code

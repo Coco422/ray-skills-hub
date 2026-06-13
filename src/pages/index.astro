@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getAllTags, getHubMeta, getSkills } from "../lib/skills";
+
+const skills = getSkills();
+const tags = getAllTags(skills);
+const meta = getHubMeta();
+const base = import.meta.env.BASE_URL;
+const teamCount = skills.filter((skill) => skill.source === "team").length;
+const personalCount = skills.filter((skill) => skill.source === "personal").length;
+---
+
+<BaseLayout
+  title="Ray Skills Hub"
+  description="Browse, inspect, and install Ray's Claude Code and Codex skills from GitHub."
+>
+  <main class="shell">
+    <header class="site-header">
+      <div class="header-copy">
+        <a class="repo-link" href="https://github.com/Coco422/ray-skills-hub">GitHub registry</a>
+        <h1>Ray Skills Hub</h1>
+        <p>
+          可视化浏览 Claude Code / Codex skills，复制 SKILL.md raw 链接或安装命令，继续用 GitHub PR 管理来源和版本。
+        </p>
+        <dl class="stats" aria-label="Hub stats">
+          <div>
+            <dt>{skills.length}</dt>
+            <dd>skills</dd>
+          </div>
+          <div>
+            <dt>{teamCount}</dt>
+            <dd>team</dd>
+          </div>
+          <div>
+            <dt>{personalCount}</dt>
+            <dd>personal</dd>
+          </div>
+          <div>
+            <dt>{meta.version}</dt>
+            <dd>{meta.updated}</dd>
+          </div>
+        </dl>
+      </div>
+      <img
+        class="header-visual"
+        src={`${base}registry-preview.png`}
+        width="1200"
+        height="630"
+        alt="Abstract registry card grid preview"
+      />
+    </header>
+
+    <section class="toolbar" aria-label="Skill filters">
+      <label class="search-box">
+        <span>Search</span>
+        <input id="skill-search" type="search" placeholder="skill、tag、用途..." autocomplete="off" />
+      </label>
+      <div class="segmented" aria-label="Source filter">
+        <button class="segment is-active" type="button" data-source-filter="all">All</button>
+        <button class="segment" type="button" data-source-filter="team">Team</button>
+        <button class="segment" type="button" data-source-filter="personal">Personal</button>
+      </div>
+      <label class="select-box">
+        <span>Tag</span>
+        <select id="tag-filter">
+          <option value="all">All tags</option>
+          {tags.map((tag) => <option value={tag}>{tag}</option>)}
+        </select>
+      </label>
+      <p class="result-count"><strong id="visible-count">{skills.length}</strong> visible</p>
+    </section>
+
+    <section class="skill-grid" aria-label="Skills">
+      {
+        skills.map((skill) => (
+          <article
+            class="skill-card"
+            data-skill-card
+            data-source={skill.source}
+            data-tags={(skill.tags ?? []).join(" ")}
+            data-search={`${skill.id} ${skill.source} ${skill.maturity ?? ""} ${
+              skill.tags?.join(" ") ?? ""
+            } ${skill.description}`}
+          >
+            <div class="card-head">
+              <div>
+                <p class="eyebrow">{skill.source}</p>
+                <h2>
+                  <a href={`${base}skills/${skill.id}`}>{skill.id}</a>
+                </h2>
+              </div>
+              <span class={`status ${skill.maturity ?? "unknown"}`}>{skill.maturity ?? "unknown"}</span>
+            </div>
+            <p class="description">{skill.description}</p>
+            <div class="meta-row" aria-label={`${skill.id} metadata`}>
+              <span>{skill.version ?? "unversioned"}</span>
+              <span>{skill.owner ?? "unknown owner"}</span>
+              <span>{skill.license ?? "unknown license"}</span>
+            </div>
+            <div class="tag-row">
+              {(skill.tags ?? []).slice(0, 5).map((tag) => <span>{tag}</span>)}
+            </div>
+            <div class="action-row">
+              <button type="button" class="copy-btn" data-copy={skill.rawMdUrl}>
+                Copy MD URL
+              </button>
+              <button type="button" class="copy-btn secondary" data-copy={skill.installCommand}>
+                Copy install cmd
+              </button>
+              <a class="icon-link" href={skill.githubMdUrl}>SKILL.md</a>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+
+  <script>
+    const searchInput = document.querySelector("#skill-search");
+    const tagFilter = document.querySelector("#tag-filter");
+    const sourceButtons = Array.from(document.querySelectorAll("[data-source-filter]"));
+    const cards = Array.from(document.querySelectorAll("[data-skill-card]"));
+    const visibleCount = document.querySelector("#visible-count");
+    let activeSource = "all";
+
+    function normalize(value) {
+      return value.toLowerCase().trim();
+    }
+
+    function applyFilters() {
+      const query = normalize(searchInput?.value ?? "");
+      const tag = tagFilter?.value ?? "all";
+      let count = 0;
+
+      cards.forEach((card) => {
+        const sourceMatch = activeSource === "all" || card.dataset.source === activeSource;
+        const tagMatch = tag === "all" || card.dataset.tags?.split(" ").includes(tag);
+        const queryMatch = !query || normalize(card.dataset.search ?? "").includes(query);
+        const visible = sourceMatch && tagMatch && queryMatch;
+        card.toggleAttribute("hidden", !visible);
+        if (visible) count += 1;
+      });
+
+      if (visibleCount) visibleCount.textContent = String(count);
+    }
+
+    sourceButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeSource = button.dataset.sourceFilter ?? "all";
+        sourceButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+        applyFilters();
+      });
+    });
+
+    searchInput?.addEventListener("input", applyFilters);
+    tagFilter?.addEventListener("change", applyFilters);
+
+    document.addEventListener("click", async (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLButtonElement) || !target.dataset.copy) return;
+
+      const original = target.textContent;
+      try {
+        await navigator.clipboard.writeText(target.dataset.copy);
+        target.textContent = "Copied";
+        target.classList.add("copied");
+      } catch {
+        target.textContent = "Copy failed";
+      } finally {
+        window.setTimeout(() => {
+          target.textContent = original;
+          target.classList.remove("copied");
+        }, 1400);
+      }
+    });
+  </script>
+</BaseLayout>
