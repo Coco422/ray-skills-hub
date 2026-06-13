@@ -7,6 +7,7 @@ import YAML from "yaml";
 const ROOT = process.cwd();
 const REPO = "Coco422/ray-skills-hub";
 const BRANCH = "main";
+const INSTALLER_URL = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/scripts/install-skill-from-github.py`;
 
 type Catalog = {
   hub?: {
@@ -121,7 +122,7 @@ export function getSkills(): Skill[] {
         rawMdUrl,
         githubUrl: `https://github.com/${REPO}/tree/${BRANCH}/${entry.path}`,
         githubMdUrl: `https://github.com/${REPO}/blob/${BRANCH}/${entry.path}/SKILL.md`,
-        installCommand: `scripts/install-skill-from-github.py \\\n+  --repo ${REPO} \\\n+  --path ${entry.path}`,
+        installCommand: `curl -fsSL ${INSTALLER_URL} | python3 - --repo ${REPO} --ref ${BRANCH} --path ${entry.path}`,
       };
     })
     .sort(sortSkills);

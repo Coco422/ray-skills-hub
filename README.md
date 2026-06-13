@@ -91,35 +91,33 @@ cp -r /tmp/ray-skills-hub/skills/personal/capture <your-project>/.claude/skills/
 
 ### Codex
 
-使用 `$skill-installer` 从 GitHub repo/path 安装：
+复制网站上的安装命令，或直接运行下面的轻量安装脚本：
 
 ```bash
-scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
-  --path skills/team/manage-skills-hub
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/team/manage-skills-hub
 
-scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
-  --path skills/team/ray-xiaofan-illustrations
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/team/ray-xiaofan-illustrations
 
-scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
-  --path skills/personal/ray-writer
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/personal/ray-writer
 
-scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
-  --path skills/personal/capture
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/personal/capture
 
-scripts/install-skill-from-github.py \
-  --repo <owner>/<repo> \
-  --path skills/personal/codex-mac-patch
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/personal/codex-mac-patch
 ```
 
-也可以固定到 release/tag：
+也可以固定到 release/tag，或安装到自定义目录：
 
 ```bash
-scripts/install-skill-from-github.py \
-  --url https://github.com/<owner>/<repo>/tree/v0.4.0/skills/team/manage-skills-hub
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --ref <tag-or-commit> --path skills/team/manage-skills-hub
+
+curl -fsSL https://raw.githubusercontent.com/Coco422/ray-skills-hub/main/scripts/install-skill-from-github.py \
+  | python3 - --path skills/team/manage-skills-hub --dest ~/.claude/skills
 ```
 
 安装后重启 Codex，让新 skill 被重新发现。
